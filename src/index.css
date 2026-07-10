@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Semantic color tokens ─────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --color-canvas:       #FAF9F5;
+  --color-white:        #ffffff;
+
+  /* Text */
+  --color-ink:          #1B2029;
+  --color-ink-secondary:#5B5A52;
+  --color-ink-tertiary: #9A968A;
+
+  /* Borders */
+  --color-hairline:     #E6E2D8;
+
+  /* Brand */
+  --color-forest:       #0F6E56;
+  --color-forest-hover: #0B5744;
+  --color-forest-soft:  #E1F5EE;
+
+  /* Amber */
+  --color-amber:        #B45309;
+  --color-amber-soft:   #FAEEDA;
+
+  /* Rose */
+  --color-rose:         #A32D2D;
+  --color-rose-soft:    #FCEBEB;
+}
+
+/* ─── Dark mode overrides ────────────────────────────────────── */
+html.dark {
+  /* Surfaces */
+  --color-canvas:       #141820;
+  --color-white:        #1c2130;
+
+  /* Text */
+  --color-ink:          #e8e6e1;
+  --color-ink-secondary:#a8a49c;
+  --color-ink-tertiary: #6b6760;
+
+  /* Borders */
+  --color-hairline:     #2a2f3d;
+
+  /* Brand — stays recognisable */
+  --color-forest:       #22c997;
+  --color-forest-hover: #1aaa7e;
+  --color-forest-soft:  #0d2921;
+
+  /* Amber */
+  --color-amber:        #f59e0b;
+  --color-amber-soft:   #2a1f0a;
+
+  /* Rose */
+  --color-rose:         #f87171;
+  --color-rose-soft:    #2a0f0f;
+}
+
+@layer base {
+  * {
+    @apply border-hairline;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans;
+    transition: background-color 0.25s, color 0.25s;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid #0F6E56;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-hairline);
+    border-radius: 999px;
+  }
+}
